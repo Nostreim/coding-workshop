@@ -1,6 +1,6 @@
 import { UseCase } from "../../lib/UseCase.base";
 import { IPORepository } from "../domain/IPORepository";
-import { PurchaseOrder } from "../domain/PurchaseOrder";
+import { PurchaseOrder } from "../domain/PurchaseOrder.entity";
 
 type CreatePOProps = {};
 export class CreatePO implements UseCase<CreatePOProps> {

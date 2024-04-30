@@ -1,5 +1,5 @@
 import { UUID } from "../../utilities/uuid";
-import { PurchaseOrder } from "./PurchaseOrder";
+import { PurchaseOrder } from "./PurchaseOrder.entity";
 
 export interface IPORepository {
   save: (po: PurchaseOrder) => Promise<void>;

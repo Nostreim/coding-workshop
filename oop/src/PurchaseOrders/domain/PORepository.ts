@@ -1,6 +1,6 @@
 import { UUID } from "../../utilities/uuid";
 import { IPORepository } from "./IPORepository";
-import { PurchaseOrder } from "./PurchaseOrder";
+import { PurchaseOrder } from "./PurchaseOrder.entity";
 
 export class PORepository implements IPORepository {
   purchaseOrders: PurchaseOrder[] = [];

@@ -1,5 +1,5 @@
 import { isUuid } from "../../utilities/uuid";
-import { PurchaseOrder } from "./PurchaseOrder";
+import { PurchaseOrder } from "./PurchaseOrder.entity";
 
 describe("Purcase Order Entity", () => {
   it("instantiates", () => {

@@ -1,12 +1,12 @@
 import { UUID, createUuid } from "../../utilities/uuid";
 
 export class PurchaseOrderLineItem {
-  private _id: UUID;
-  private _purchaseOrderId: UUID;
-  private _itemNumber: string;
-  private _description: string;
-  private _price: number;
-  private _quantity: number;
+  private _id?: UUID;
+  private _purchaseOrderId?: UUID;
+  private _itemNumber?: string;
+  private _description?: string;
+  private _price?: number;
+  private _quantity?: number;
   constructor({
     id,
     purchaseOrderId,

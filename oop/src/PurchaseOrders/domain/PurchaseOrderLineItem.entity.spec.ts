@@ -2,7 +2,7 @@ import { createUuid, isUuid } from "../../utilities/uuid";
 import { PurchaseOrder } from "./PurchaseOrder.entity";
 import { PurchaseOrderLineItem } from "./PurchaseOrderLineItem.entity";
 
-describe("Purcase Order Entity", () => {
+describe("Purcase Order Line Item Entity", () => {
   it("instantiates", () => {
     const purchaseOrder = new PurchaseOrder();
     const lineItem = new PurchaseOrderLineItem({

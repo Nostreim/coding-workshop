@@ -11,16 +11,15 @@ type CreatePOProps = {
 export class CreatePO implements UseCase<CreatePOProps> {
   constructor(private repo: IPORepository) {}
   async execute({ id, lineItems }: CreatePOProps) {
-    const purchaseOrderId = createUuid();
     const purchaseOrder = new PurchaseOrder({
-      id: purchaseOrderId,
+      id,
       lineItems: lineItems.map((lineItem) => ({
         id: createUuid(),
         itemNumber: lineItem.itemNumber,
         description: lineItem.description,
         price: lineItem.price,
         quantity: lineItem.quantity,
-        purchaseOrderId,
+        purchaseOrderId: id,
       })),
     });
     await this.repo.save(purchaseOrder);

@@ -2,7 +2,7 @@ import { createUuid, isUuid } from "../../utilities/uuid";
 import { PurchaseOrder } from "./PurchaseOrder.entity";
 import { PurchaseOrderLineItem } from "./PurchaseOrderLineItem.entity";
 
-describe("Purcase Order Entity", () => {
+describe("Purchase Order Entity", () => {
   it("instantiates", () => {
     const PO = new PurchaseOrder();
     expect(isUuid(PO.id)).toBeTruthy();

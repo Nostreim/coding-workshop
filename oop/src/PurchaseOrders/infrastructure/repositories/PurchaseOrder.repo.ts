@@ -1,5 +1,5 @@
 import { UUID } from "../../../utilities/uuid";
-import { IPORepository } from "../../domain/IPORepository";
+import { IPORepository } from "../../domain/PurchaseOrder.repo-interface";
 import { PurchaseOrder } from "../../domain/PurchaseOrder.entity";
 
 export class PORepository implements IPORepository {

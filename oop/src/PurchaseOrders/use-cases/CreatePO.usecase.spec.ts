@@ -1,5 +1,5 @@
 import { createUuid } from "../../utilities/uuid";
-import { PORepository } from "../infrastructure/repositories/PORepository";
+import { PORepository } from "../infrastructure/repositories/PurchaseOrder.repo";
 import { CreatePO } from "./CreatePO.usecase";
 
 describe("CreatePO", () => {

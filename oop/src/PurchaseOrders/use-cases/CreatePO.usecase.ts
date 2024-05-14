@@ -6,14 +6,14 @@ import { CreatePOLineItemDTO } from "../infrastructure/dto/CreatePO.dto";
 
 type CreatePOProps = {
   id: UUID;
-  lineItems: CreatePOLineItemDTO[];
+  lineItems?: CreatePOLineItemDTO[];
 };
 export class CreatePO implements UseCase<CreatePOProps> {
   constructor(private repo: IPORepository) {}
   async execute({ id, lineItems }: CreatePOProps) {
     const purchaseOrder = new PurchaseOrder({
       id,
-      lineItems: lineItems.map((lineItem) => ({
+      lineItems: lineItems?.map((lineItem) => ({
         id: createUuid(),
         itemNumber: lineItem.itemNumber,
         description: lineItem.description,

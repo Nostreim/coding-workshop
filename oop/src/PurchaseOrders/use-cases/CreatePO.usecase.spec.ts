@@ -8,6 +8,20 @@ describe("CreatePO", () => {
     new CreatePO(repo);
   });
 
+  it("creates a PO", async () => {
+    const repo = new PORepository();
+    const useCase = new CreatePO(repo);
+
+    const purchaseOrderId = createUuid();
+
+    await useCase.execute({
+      id: purchaseOrderId,
+    });
+    const purchaseOrder = await repo.fetch(purchaseOrderId);
+    expect(purchaseOrder?.id).toBe(purchaseOrderId);
+    expect(purchaseOrder?.lineItems).toHaveLength(0);
+  });
+
   it("creates a PO with line items", async () => {
     const repo = new PORepository();
     const useCase = new CreatePO(repo);

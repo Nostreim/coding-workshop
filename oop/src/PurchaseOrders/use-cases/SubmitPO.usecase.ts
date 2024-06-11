@@ -7,7 +7,7 @@ type SubmitPOProps = {
 };
 
 export class SubmitPO implements UseCase<SubmitPOProps> {
-  // constructor(private repo: IPORepository) {}
+  constructor(private repo: IPORepository) {}
   async execute({ id }: SubmitPOProps) {
     // const purchaseOrder = await this.repo.get(id);
     // purchaseOrder.submit();

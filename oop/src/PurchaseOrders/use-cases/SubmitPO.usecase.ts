@@ -9,14 +9,14 @@ type SubmitPOProps = {
 
 export class SubmitPO implements UseCase<SubmitPOProps> {
   constructor(private repo: IPORepository) {}
-  async execute({ purchaseOrder }: SubmitPOProps) {
+  async execute({ purchaseOrder }: { purchaseOrder: PurchaseOrder }) {
     // find the latest po number
     await this.repo.save(
       new PurchaseOrder({
-        ...purchaseOrder,
+        id: purchaseOrder.id,
         number: new PONumber("syn-000002"),
+        lineItems: purchaseOrder.lineItems,
       })
     );
-    return this.repo.fetch(purchaseOrder.id);
   }
 }

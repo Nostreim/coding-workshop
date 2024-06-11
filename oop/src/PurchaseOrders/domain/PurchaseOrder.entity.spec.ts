@@ -26,6 +26,7 @@ describe("Purchase Order Entity", () => {
     });
     const purchaseOrder = new PurchaseOrder({
       id: poId,
+      poNumber: "syn-000001",
       lineItems: [fizzBobLineItem, debopulatorLineItem],
     });
     expect(purchaseOrder.lineItems.map((item) => item.id)).toEqual([

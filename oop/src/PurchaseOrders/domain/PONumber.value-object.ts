@@ -1,6 +1,8 @@
+export type PrefixedNumber = `syn-${number}`;
+
 export class PONumber {
-  private _value: `syn-${number}`;
-  constructor(value: `syn-${number}`) {
+  private _value: PrefixedNumber;
+  constructor(value: PrefixedNumber) {
     if (!value.startsWith("syn-")) {
       throw new Error("Purchase Order Number must be prefixed with 'syn-'");
     }

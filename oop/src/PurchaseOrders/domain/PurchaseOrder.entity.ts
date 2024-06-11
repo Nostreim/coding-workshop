@@ -1,6 +1,5 @@
-import { P } from "ts-pattern";
 import { createUuid, UUID } from "../../utilities/uuid";
-import { PONumber, PrefixedNumber } from "./PONumber.value-object";
+import { PONumber } from "./PONumber.value-object";
 import { PurchaseOrderLineItem } from "./PurchaseOrderLineItem.entity";
 
 type PurchaseOrderProps = {

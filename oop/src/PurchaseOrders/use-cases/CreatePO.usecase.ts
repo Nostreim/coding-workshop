@@ -17,7 +17,7 @@ export class CreatePO implements UseCase<CreatePOProps> {
       lineItems: lineItems?.map(
         (lineItem) =>
           new PurchaseOrderLineItem({
-            id: createUuid(),
+            id: lineItem.id,
             purchaseOrderId: id,
             itemNumber: lineItem.itemNumber,
             description: lineItem.description,

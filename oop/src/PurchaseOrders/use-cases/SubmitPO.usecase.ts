@@ -14,7 +14,7 @@ export class SubmitPO implements UseCase<SubmitPOProps> {
     await this.repo.save(
       new PurchaseOrder({
         id: purchaseOrder.id,
-        number: lastPO?.number?.increment(),
+        number: lastPO?.number?.increment() ?? new PONumber("syn-000001"),
         lineItems: purchaseOrder.lineItems,
       })
     );

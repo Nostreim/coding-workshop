@@ -17,7 +17,7 @@ describe("SubmitPO", () => {
     const existingPO = await repo.save(
       new PurchaseOrder({
         id: createUuid(),
-        number: new PONumber("syn-000001"),
+        number: new PONumber("syn-000005"),
       })
     );
     const poToSubmit = new PurchaseOrder({
@@ -29,6 +29,6 @@ describe("SubmitPO", () => {
       purchaseOrder: poToSubmit,
     });
     const result = await repo.fetch(id);
-    expect(result?.number?.value).toEqual(new PONumber("syn-000002").value);
+    expect(result?.number?.value).toEqual(new PONumber("syn-000006").value);
   });
 });

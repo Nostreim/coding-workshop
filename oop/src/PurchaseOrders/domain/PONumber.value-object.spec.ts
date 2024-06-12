@@ -17,4 +17,20 @@ describe("PONumber", () => {
       `Purchase Order Number must be 6 digits (expected syn-000001 but received syn-1234567)`
     );
   });
+
+  it("returns the value", () => {
+    const poNumber = new PONumber("syn-000001");
+    expect(poNumber.value).toBe("syn-000001");
+  });
+
+  it("returns the digits", () => {
+    const poNumber = new PONumber("syn-000001");
+    expect(poNumber.digits).toBe(1);
+  });
+
+  it("increments the number", () => {
+    const poNumber = new PONumber("syn-000001");
+    const incremented = poNumber.increment();
+    expect(incremented.value).toBe("syn-000002");
+  });
 });

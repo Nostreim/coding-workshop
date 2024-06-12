@@ -20,11 +20,11 @@ export class PORepository implements IPORepository {
     const po = this.purchaseOrders.find((p) => p.id === id);
     return po || null;
   }
-  async fetchNextPONumber() {
+  async fetchLastPOByNumber() {
     if (this.purchaseOrders.length === 0) {
-      return new PONumber("syn-000001");
+      return null;
     }
     const [lastPO] = this.purchaseOrders.sort(byPONumber);
-    return lastPO.number?.increment() ?? new PONumber("syn-000001");
+    return lastPO;
   }
 }

@@ -1,4 +1,5 @@
 import { createUuid, isUuid } from "../../utilities/uuid";
+import { PONumber } from "./PONumber.value-object";
 import { PurchaseOrder } from "./PurchaseOrder.entity";
 import { PurchaseOrderLineItem } from "./PurchaseOrderLineItem.entity";
 
@@ -26,6 +27,7 @@ describe("Purchase Order Entity", () => {
     });
     const purchaseOrder = new PurchaseOrder({
       id: poId,
+      number: new PONumber("syn-000001"),
       lineItems: [fizzBobLineItem, debopulatorLineItem],
     });
     expect(purchaseOrder.lineItems.map((item) => item.id)).toEqual([

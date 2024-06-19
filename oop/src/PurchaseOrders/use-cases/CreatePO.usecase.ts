@@ -1,5 +1,5 @@
 import { UseCase } from "../../lib/UseCase.base";
-import { UUID, createUuid } from "../../utilities/uuid";
+import { UUID } from "../../utilities/uuid";
 import { IPORepository } from "../domain/PurchaseOrder.repo-interface";
 import { PurchaseOrder } from "../domain/PurchaseOrder.entity";
 import { CreatePOLineItemDTO } from "../infrastructure/dto/CreatePO.dto";

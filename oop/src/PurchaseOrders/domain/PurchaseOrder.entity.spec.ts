@@ -51,4 +51,12 @@ describe("Purchase Order Entity", () => {
     po.submit(new PONumber("syn-000001"));
     expect(po.status).toEqual("pending approval");
   });
+
+  it("returns the purchaser id", () => {
+    const purchaserId = createUuid();
+    const po = new PurchaseOrder({
+      purchasedBy: purchaserId,
+    });
+    expect(po.purchasedBy).toBe(purchaserId);
+  });
 });

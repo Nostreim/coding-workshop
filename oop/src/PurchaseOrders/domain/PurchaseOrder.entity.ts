@@ -7,16 +7,19 @@ type PurchaseOrderProps = {
   id?: UUID;
   number?: PONumber;
   lineItems?: PurchaseOrderLineItem[];
+  purchasedBy?: UUID | null;
 };
 
 export class PurchaseOrder {
   private _id: UUID;
   private _number?: PONumber;
   private _lineItems: PurchaseOrderLineItem[] = [];
-  constructor({ id, number, lineItems }: PurchaseOrderProps = {}) {
+  private _purchasedBy?: UUID | null;
+  constructor({ id, purchasedBy, number, lineItems }: PurchaseOrderProps = {}) {
     this._id = id ?? createUuid();
     this._number = number;
     this._lineItems = lineItems ?? [];
+    this._purchasedBy = purchasedBy ?? null;
   }
 
   submit(num: PONumber) {
@@ -37,6 +40,10 @@ export class PurchaseOrder {
 
   get lineItems() {
     return this._lineItems;
+  }
+
+  get purchasedBy() {
+    return this._purchasedBy;
   }
 
   get status() {

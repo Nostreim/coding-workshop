@@ -20,7 +20,7 @@ describe("SubmitPO", () => {
     await repo.save(poToSubmit);
 
     await submitPO.execute({
-      purchaseOrder: poToSubmit,
+      purchaseOrderId: poToSubmit.id,
     });
     const result = await repo.fetch(id);
     expect(result?.number?.value).toEqual(new PONumber("syn-000001").value);
@@ -42,9 +42,31 @@ describe("SubmitPO", () => {
     await repo.save(poToSubmit);
 
     await submitPO.execute({
-      purchaseOrder: poToSubmit,
+      purchaseOrderId: poToSubmit.id,
     });
     const result = await repo.fetch(id);
     expect(result?.number?.value).toEqual(new PONumber("syn-000006").value);
+  });
+
+  it("throws an error if the purchase order does not exist", async () => {
+    const repo = new PORepository();
+    const submitPO = new SubmitPO(repo);
+    const invalidUUID = createUuid();
+    expect(submitPO.execute({ purchaseOrderId: invalidUUID })).rejects.toThrow(
+      `Purchase Order with ID ${invalidUUID} not found`
+    );
+  });
+
+  it("throws an error if the purchase order has already been submitted", async () => {
+    const repo = new PORepository();
+    const submitPO = new SubmitPO(repo);
+    const poToSubmit = new PurchaseOrder({
+      id: createUuid(),
+      number: new PONumber("syn-000001"),
+    });
+    await repo.save(poToSubmit);
+    expect(
+      submitPO.execute({ purchaseOrderId: poToSubmit.id })
+    ).rejects.toThrow("Submitted POs can't be assigned a new PO Number");
   });
 });

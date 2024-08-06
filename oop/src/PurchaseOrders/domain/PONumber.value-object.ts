@@ -1,3 +1,5 @@
+import { DomainInvariantViolation } from "../../utilities/error/DomainInvariantViolation";
+
 export type PrefixedNumber = `syn-${number}`;
 
 export class PONumber {
@@ -6,11 +8,13 @@ export class PONumber {
   private _prefix: string = "syn-";
   constructor(value: PrefixedNumber) {
     if (!value.startsWith("syn-")) {
-      throw new Error("Purchase Order Number must be prefixed with 'syn-'");
+      throw new DomainInvariantViolation(
+        "Purchase Order Number must be prefixed with 'syn-'"
+      );
     }
 
     if (value.length !== 10) {
-      throw new Error(
+      throw new DomainInvariantViolation(
         `Purchase Order Number must be 6 digits (expected syn-000001 but received ${value})`
       );
     }

@@ -1,3 +1,4 @@
+import { DomainInvariantViolation } from "../../utilities/error/DomainInvariantViolation";
 import { createUuid, UUID } from "../../utilities/uuid";
 import { PONumber } from "./PONumber.value-object";
 import { PurchaseOrderLineItem } from "./PurchaseOrderLineItem.entity";
@@ -16,6 +17,14 @@ export class PurchaseOrder {
     this._id = id ?? createUuid();
     this._number = number;
     this._lineItems = lineItems ?? [];
+  }
+
+  submit(num: PONumber) {
+    if (this._number)
+      throw new DomainInvariantViolation(
+        "Submitted POs can't be assigned a new PO Number"
+      );
+    this._number = num;
   }
 
   get number() {

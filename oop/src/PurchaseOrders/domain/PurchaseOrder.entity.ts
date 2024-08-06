@@ -38,4 +38,8 @@ export class PurchaseOrder {
   get lineItems() {
     return this._lineItems;
   }
+
+  get status() {
+    return this._number ? "pending approval" : "draft";
+  }
 }
